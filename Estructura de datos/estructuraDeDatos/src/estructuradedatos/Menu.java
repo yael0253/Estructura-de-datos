@@ -11,7 +11,7 @@ import java.util.*;
  //* @author Yael
 
 public class Menu extends javax.swing.JFrame implements Runnable{
-    String hora, minutos;
+    String hora, minutos, segundos;
     Thread hilo;
 
     /**
@@ -37,12 +37,13 @@ public class Menu extends javax.swing.JFrame implements Runnable{
         calendario.setTime(horaactual);
         hora=calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
         minutos= calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
     }
      public void run(){
          Thread current= Thread.currentThread();
          while(current== hilo){
              hora();
-             Hora.setText(hora+":"+minutos);
+             Hora.setText(hora+":"+minutos+":"+segundos);
 }
          
      }
@@ -67,6 +68,11 @@ public class Menu extends javax.swing.JFrame implements Runnable{
         matrizTiBtn = new javax.swing.JButton();
         matrizDispersaBtn = new javax.swing.JButton();
         burbujaBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,7 +140,7 @@ public class Menu extends javax.swing.JFrame implements Runnable{
             }
         });
         jPanel3.add(matrizTiBtn);
-        matrizTiBtn.setBounds(240, 130, 310, 40);
+        matrizTiBtn.setBounds(50, 120, 310, 40);
 
         matrizDispersaBtn.setText("Matriz dispersa");
         matrizDispersaBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +149,7 @@ public class Menu extends javax.swing.JFrame implements Runnable{
             }
         });
         jPanel3.add(matrizDispersaBtn);
-        matrizDispersaBtn.setBounds(240, 190, 310, 40);
+        matrizDispersaBtn.setBounds(420, 120, 310, 40);
 
         burbujaBtn.setText("Metodo de la burbuja");
         burbujaBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +158,32 @@ public class Menu extends javax.swing.JFrame implements Runnable{
             }
         });
         jPanel3.add(burbujaBtn);
-        burbujaBtn.setBounds(240, 250, 310, 50);
+        burbujaBtn.setBounds(50, 190, 310, 40);
+
+        jButton1.setText("Busqueda lineal");
+        jPanel3.add(jButton1);
+        jButton1.setBounds(420, 250, 310, 40);
+
+        jButton2.setText("Busqueda no lineal");
+        jPanel3.add(jButton2);
+        jButton2.setBounds(50, 320, 310, 40);
+
+        jButton3.setText("Metodo de insersión");
+        jPanel3.add(jButton3);
+        jButton3.setBounds(420, 320, 310, 40);
+
+        jButton4.setText("Pila");
+        jPanel3.add(jButton4);
+        jButton4.setBounds(420, 190, 310, 40);
+
+        jButton5.setText("Cola");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5);
+        jButton5.setBounds(50, 250, 310, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +224,10 @@ public class Menu extends javax.swing.JFrame implements Runnable{
         newframe.setVisible(true);
         this.dispose();      
     }//GEN-LAST:event_burbujaBtnActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +282,11 @@ public class Menu extends javax.swing.JFrame implements Runnable{
     private javax.swing.JLabel Fecha;
     private javax.swing.JLabel Hora;
     private javax.swing.JButton burbujaBtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

@@ -15,7 +15,7 @@ import java.util.*;
  * @author Yael
  */
 public class burbuja extends javax.swing.JFrame implements Runnable{
-    String hora, minutos;
+    String hora, minutos,segundos;
     Thread hilo;
     /**
      * Creates new form Biseccion
@@ -37,12 +37,13 @@ public class burbuja extends javax.swing.JFrame implements Runnable{
         calendario.setTime(horaactual);
         hora=calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
         minutos= calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
     }
      public void run(){
          Thread current= Thread.currentThread();
          while(current== hilo){
              hora();
-             Hora.setText(hora+":"+minutos);
+             Hora.setText(hora+":"+minutos+":"+segundos);
 }
          
      }
@@ -127,9 +128,9 @@ public class burbuja extends javax.swing.JFrame implements Runnable{
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(Hora)
-                .addGap(143, 143, 143)
+                .addGap(226, 226, 226)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
                 .addComponent(Fecha)
                 .addGap(22, 22, 22))
         );
@@ -139,9 +140,12 @@ public class burbuja extends javax.swing.JFrame implements Runnable{
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Fecha)
-                    .addComponent(Hora)
-                    .addComponent(jLabel6))
-                .addContainerGap())
+                    .addComponent(Hora))
+                .addGap(33, 33, 33))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 51, 0));
@@ -154,7 +158,7 @@ public class burbuja extends javax.swing.JFrame implements Runnable{
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
+            .addGap(0, 319, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

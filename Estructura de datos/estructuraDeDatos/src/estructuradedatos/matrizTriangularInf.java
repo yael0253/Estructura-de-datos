@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Yael
  */
 public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
-    String hora, minutos;
+    String hora, minutos,segundos;
     Thread hilo;
     /**
      * Creates new form Biseccion
@@ -38,12 +38,13 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
         calendario.setTime(horaactual);
         hora=calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
         minutos= calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
     }
      public void run(){
          Thread current= Thread.currentThread();
          while(current== hilo){
              hora();
-             Hora.setText(hora+":"+minutos);
+             Hora.setText(hora+":"+minutos+":"+segundos);
 }
          
      }
@@ -66,11 +67,11 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
         Hora = new javax.swing.JLabel();
         Fecha = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        textfila = new java.awt.TextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        textColumna = new javax.swing.JTextField();
+        textfila = new javax.swing.JTextField();
+        textColumna1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -184,12 +185,6 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
         jPanel4.setBackground(new java.awt.Color(255, 102, 0));
         jPanel4.setForeground(new java.awt.Color(255, 153, 0));
 
-        textfila.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfilaActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         jLabel2.setText("Filas de la matrices");
 
@@ -206,16 +201,16 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textfila, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(textColumna, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textfila, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(textColumna1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -224,13 +219,13 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
                 .addGap(46, 46, 46)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textfila, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
+                .addComponent(textfila, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel1)
                 .addGap(9, 9, 9)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textColumna, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textColumna1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -358,16 +353,12 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void textfilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfilaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textfilaActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int fi, co;
         
         fi = Integer.parseInt(textfila.getText());
-        co = Integer.parseInt(textColumna.getText());
+        co = Integer.parseInt(textfila.getText());
         
     
                 int matriz[][] = new int[fi][co];
@@ -380,6 +371,7 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
                                 System.out.print(matriz[i][j]+" ");
                                
                                 matrizUno.setText(matrizUno.getText() + matriz[i][j] + " ");
+                                resultado.setText(resultado.getText() + matriz[i][j] + " ");
                                 resultado.setText(resultado.getText() + matriz[i][j] + " ");
                                  
                                 
@@ -506,7 +498,7 @@ public class matrizTriangularInf extends javax.swing.JFrame implements Runnable{
     private javax.swing.JTextPane matriz2;
     private javax.swing.JTextPane matrizUno;
     private javax.swing.JTextPane resultado;
-    private javax.swing.JTextField textColumna;
-    private java.awt.TextField textfila;
+    private javax.swing.JTextField textColumna1;
+    private javax.swing.JTextField textfila;
     // End of variables declaration//GEN-END:variables
 }

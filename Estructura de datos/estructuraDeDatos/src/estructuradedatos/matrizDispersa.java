@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Yael
  */
 public class matrizDispersa extends javax.swing.JFrame implements Runnable{
-    String hora, minutos;
+    String hora, minutos,segundos;
     Thread hilo;
     /**
      * Creates new form Biseccion
@@ -38,12 +38,13 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
         calendario.setTime(horaactual);
         hora=calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
         minutos= calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
     }
      public void run(){
          Thread current= Thread.currentThread();
          while(current== hilo){
              hora();
-             Hora.setText(hora+":"+minutos);
+             Hora.setText(hora+":"+minutos+":"+segundos);
 }
          
      }
@@ -59,9 +60,11 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        textfila = new javax.swing.JTextField();
-        textColumna = new javax.swing.JTextField();
+        TextRenglones = new javax.swing.JTextField();
+        TextColumnas = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        TextElementos = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -78,19 +81,28 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
 
         jLabel1.setText("Tamaño de la matriz:");
 
-        textfila.addActionListener(new java.awt.event.ActionListener() {
+        TextRenglones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfilaActionPerformed(evt);
+                TextRenglonesActionPerformed(evt);
             }
         });
 
-        textColumna.addActionListener(new java.awt.event.ActionListener() {
+        TextColumnas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textColumnaActionPerformed(evt);
+                TextColumnasActionPerformed(evt);
             }
         });
 
         jLabel2.setText("x");
+
+        jLabel3.setText("Numero de elementos:");
+
+        TextElementos.setText("jTextField1");
+        TextElementos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextElementosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,13 +110,19 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textfila, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textColumna, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(TextElementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextRenglones, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,10 +131,14 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(textfila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextRenglones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(textColumna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(326, Short.MAX_VALUE))
+                    .addComponent(TextColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(TextElementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 0, 204));
@@ -257,42 +279,23 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void textfilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfilaActionPerformed
+    private void TextRenglonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRenglonesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textfilaActionPerformed
+    }//GEN-LAST:event_TextRenglonesActionPerformed
 
-    private void textColumnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textColumnaActionPerformed
+    private void TextColumnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextColumnasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textColumnaActionPerformed
+    }//GEN-LAST:event_TextColumnasActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int fi, co;
-        
-        fi = Integer.parseInt(textfila.getText());
-        co = Integer.parseInt(textColumna.getText());
-        
-    
-                int matriz[][] = new int[fi][co];
-                if(matriz.length==matriz[0].length){
-                        for(int i=0;i<fi;i++){
-                             //matrizUno.setText(matrizUno.getText() + "\n");
-                             //resultado.setText(resultado.getText() + "\n");
-                        for(int j=0;j<co;j++){
-                                matriz[i][j]=Integer.parseInt(JOptionPane.showInputDialog("Digita un número para la posición: a["+i+"]["+j+"]"+" de la matriz"));
-                                System.out.print(matriz[i][j]+" ");
-                               
-                                //matrizUno.setText(matrizUno.getText() + matriz[i][j] + " ");
-                                //resultado.setText(resultado.getText() + matriz[i][j] + " ");
-                                 
-                                
-                        }
-                        System.out.println();
-                        
-                }
-                
+                 
     }//GEN-LAST:event_jButton3ActionPerformed
-    }
+
+    private void TextElementosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextElementosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextElementosActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -332,16 +335,18 @@ public class matrizDispersa extends javax.swing.JFrame implements Runnable{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fecha;
     private javax.swing.JLabel Hora;
+    private javax.swing.JTextField TextColumnas;
+    private javax.swing.JTextField TextElementos;
+    private javax.swing.JTextField TextRenglones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField textColumna;
-    private javax.swing.JTextField textfila;
     // End of variables declaration//GEN-END:variables
 }
