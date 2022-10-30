@@ -2,6 +2,7 @@
 package estructuradedatos;
 
 
+
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -220,7 +221,7 @@ public class Menu extends javax.swing.JFrame implements Runnable{
 
     private void burbujaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_burbujaBtnActionPerformed
         // TODO add your handling code here:
-        burbuja newframe = new burbuja();
+        MetodoBurbuja newframe = new MetodoBurbuja();
         newframe.setVisible(true);
         this.dispose();      
     }//GEN-LAST:event_burbujaBtnActionPerformed
